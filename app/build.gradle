@@ -1,0 +1,123 @@
+
+group = 'com.hfyd.atlas.demo'
+version= getEnvValue("versionName", "1.0.0");
+
+def apVersion = getEnvValue("apVersion", "1.0.0");
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.taobao.atlas'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '26.0.2'
+    defaultConfig {
+        applicationId "com.hfyd.atlas.demo"
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName version
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            ndk {
+                abiFilters "x86","armeabi"
+            }
+        }
+    }
+}
+
+atlas {
+    //声明为awb 即bundle工程
+    atlasEnabled true
+    instantAppEnabled true
+
+    patchConfigs {
+        debug {
+            //打动态部署 patch 包
+            createTPatch true
+        }
+    }
+
+    tBuildConfig {
+        //自启动bundle配置
+        //远程bundle
+        outOfApkBundles = ['activebundle']
+        classInject false
+        aaptConstantId true
+    }
+
+    manifestOptions {
+        addAtlasProxyComponents true
+    }
+
+    buildTypes {
+        debug {
+            if (apVersion) {
+                baseApDependency "com.hfyd.atlas.demo:AP-debug:${apVersion}@ap"
+                patchConfig patchConfigs.debug
+            }
+        }
+    }
+}
+
+String getEnvValue(key, defValue) {
+    def val = System.getProperty(key);
+    if (null != val) {
+        return val;
+    }
+    val = System.getenv(key);
+    if (null != val) {
+        return val;
+    }
+    return defValue;
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    compile 'com.alibaba:fastjson:1.1.45.android@jar'
+
+
+    compile rootProject.ext.lib_atlas_core
+    compile rootProject.ext.lib_atlas_update
+
+    bundleCompile project(':newsbundle')
+    bundleCompile project(':activebundle')
+}
+
+
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+
+publishing {
+    repositories {
+        mavenLocal()
+    }
+}
+
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            artifact "${project.buildDir}/outputs/apk/debug/${project.name}-debug.ap"
+            artifactId "AP-debug"
+        }
+    }
+}
