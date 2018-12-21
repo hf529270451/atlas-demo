@@ -27,7 +27,7 @@ public class NewsFragment extends Fragment implements IRemote {
     @Override
     public void onResume() {
         super.onResume();
-        Toast.makeText(getActivity(),"firstBundle haschanged 1.0.0",Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(),"firstBundle haschanged 1.0.1",Toast.LENGTH_LONG).show();
     }
 //    @Override
 //    public void onListFragmentInteraction(DummyContent.DummyItem item) {
