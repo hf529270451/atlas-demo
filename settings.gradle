@@ -1,3 +1,5 @@
 include ':app'
 include ':newsbundle'
 include ':activebundle'
+include ':core_base',':core_cache',':core_image',':core_logger',':core_network',':core_parse',':core_widget'
+include ':framework'

@@ -29,8 +29,8 @@
 
 	例如: 如果这时你app的versionName是1.0.1
 你的命令行就是:
-    adb push build/outputs/tpatch-debug/update-1.0.1.json /sdcard/Android/data/com.taobao.demo/cache/update-1.0.1.json
-    adb push build/outputs/tpatch-debug/patch-1.0.1@1.0.0.tpatch /sdcard/Android/data/com.taobao.demo/cache/patch-1.0.2@1.0.1.tpatch
+    adb push build/outputs/tpatch-debug/update-1.0.0.json /sdcard/Android/data/com.atlas.hfyd/cache/update-1.0.0.json
+    adb push build/outputs/tpatch-debug/patch-1.0.1@1.0.0.tpatch /sdcard/Android/data/com.atlas.hfyd/cache/patch-1.0.2@1.0.1.tpatch
 
 如果这时你app的versionName是1.0.0,也就是还是基线版本
 你的命令行就是:
@@ -44,3 +44,8 @@
 	根据你目前的app版本，重复6步骤，推送对应版本的update-**.json,和对应的tpatch文件。	
 
 10、 如果做了多次动态部署后，需要从头开始测试，请先清除AtlasDemo根目录下的hisTpatch文件夹。
+
+
+
+11.
+adb push /Users/hfyd/androidDemo/AtlasDemo2/app/build/outputs/remote-bundles-debug/libcom_hfyd_atlas_demo_active.so /sdcard/Android/data/com.atlas.hfyd/cache/libcom_hfyd_atlas_demo_active.so
