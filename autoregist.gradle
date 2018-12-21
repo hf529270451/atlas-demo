@@ -1,0 +1,23 @@
+project.apply plugin: 'auto-register'
+project.ext.registerInfoList = [
+        [ //自动注册组件
+          'scanInterface'          : 'com.billy.cc.core.component.IComponent'
+          , 'scanSuperClasses'     : ['com.czb.chezhubang.base.base.component.BaseComponent']
+          , 'codeInsertToClassName': 'com.billy.cc.core.component.ComponentManager'
+          , 'registerMethodName'   : 'registerComponent'
+          , 'exclude'              : [//排除的类，支持正则表达式（包分隔符需要用/表示，不能用.）
+                                      'com.billy.cc.core.component.'.replaceAll("\\.", "/") + ".*"
+        ]
+        ], [
+                'scanInterface'          : "com.czb.chezhubang.base.base.application.BaseAppInit"
+                , 'codeInsertToClassName': 'com.czb.chezhubang.base.base.application.AppInitManager'
+                , 'registerMethodName'   : 'register'
+        ], [
+                'scanInterface'          : "com.czb.chezhubang.base.http.interceptor.param.ICommonParamsProvider"
+                , 'codeInsertToClassName': 'com.czb.chezhubang.base.http.interceptor.param.CommonParamsManager'
+                , 'registerMethodName'   : 'addParams'
+        ]
+]
+autoregister {
+    registerInfo = registerInfoList
+}
