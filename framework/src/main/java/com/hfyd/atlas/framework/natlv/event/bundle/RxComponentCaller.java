@@ -66,14 +66,14 @@ public class RxComponentCaller {
         Async async = method.getAnnotation(Async.class);
         if (async != null) {
             info.isAsync = true;
-            //info.componentName = async.componentName();
+            info.commandName = async.command();
             info.action = async.action();
         }
 
         Sync aync = method.getAnnotation(Sync.class);
         if (aync != null) {
             info.isAsync = false;
-            //info.componentName = aync.componentName();
+            info.commandName = aync.command();
             info.action = aync.action();
         }
 
@@ -82,7 +82,7 @@ public class RxComponentCaller {
             info.interceptorName = interceptor.name();
 
         TransactionLevel level = method.getAnnotation(TransactionLevel.class);
-        if (level != null){
+        if (level != null) {
             info.remoteType = level.value();
         }
 
@@ -94,11 +94,12 @@ public class RxComponentCaller {
                     if (anno instanceof Param) {
                         String argKey = ((Param) anno).value();
                         Object arg = args[i];
-                        if ("commandName".equals(argKey) && arg instanceof String) {
+                        /*if ("commandName".equals(argKey) && arg instanceof String) {
                             info.commandName = (String) arg;
                         } else {
-                            info.putArg(argKey, arg);
-                        }
+
+                        }*/
+                        info.putArg(argKey, arg);
                     }
                 }
             }

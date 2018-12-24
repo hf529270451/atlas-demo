@@ -13,4 +13,5 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Retention(RUNTIME)
 public @interface Sync {
     String action();
+    String command() default "";
 }

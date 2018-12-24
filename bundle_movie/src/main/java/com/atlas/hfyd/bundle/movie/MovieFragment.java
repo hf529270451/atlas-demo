@@ -18,8 +18,6 @@ public class MovieFragment extends Fragment implements IRemote {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_movie, container, false);
-
-
         return rootView;
     }
 

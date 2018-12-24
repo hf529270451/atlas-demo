@@ -1,5 +1,7 @@
 //apply from: rootProject.file('autoregist.gradle')
 apply plugin: 'com.android.library'
+apply plugin: 'com.taobao.atlas'
+
 
 /*atlas {
     bundleConfig{
@@ -9,6 +11,9 @@ apply plugin: 'com.android.library'
 
 group = 'com.hfyd.atlas.host'
 version = '1.0.0'*/
+
+group = 'com.hfyd.atlas.host'
+version = '0.1.1'
 
 android {
     compileSdkVersion 28

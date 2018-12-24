@@ -70,7 +70,7 @@ public class AtlasRemoteHandler implements RemoteHandler {
                         }
                     });
         } else if (info.remoteType == TransactionType.TYPE_TRANSACTION) {
-            RemoteFactory.requestRemote(RemoteTransactor.class, activity, new Intent("atlas.transaction.intent.action.SECOND_TRANSACTION"),
+            RemoteFactory.requestRemote(RemoteTransactor.class, activity, new Intent(info.action),
                     new RemoteFactory.OnRemoteStateListener<RemoteTransactor>() {
                         @Override
                         public void onRemotePrepared(RemoteTransactor iRemote) {
@@ -94,7 +94,7 @@ public class AtlasRemoteHandler implements RemoteHandler {
                 @Override
                 @SuppressWarnings("unchecked")
                 public void OnResponse(Bundle response) {
-                    subscriber.onNext(new AtlasResult(bundle, iRemote));
+                    subscriber.onNext(new AtlasResult(response, iRemote));
                 }
             });
         } else {

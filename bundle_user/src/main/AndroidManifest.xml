@@ -6,6 +6,12 @@
         android:supportsRtl="true">
         <meta-data android:name="atlas.fragment.intent.action.user.USER_FRAGMENT"
             android:value="com.atlas.hfyd.bundle.user.UserFragment"/>
+
+        <meta-data android:name="atlas.transaction.intent.action.user.TRANSACTION"
+            android:value="com.atlas.hfyd.bundle.user.UserTransaction"/>
+
+        <activity android:name="com.atlas.hfyd.bundle.user.LoginActivity"/>
+
     </application>
 
 

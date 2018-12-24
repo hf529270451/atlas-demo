@@ -1,17 +1,15 @@
 package com.hfyd.atlas.demo;
 
+
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.taobao.atlas.remote.RemoteFactory;
 import android.taobao.atlas.remote.fragment.RemoteFragment;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
 
 import com.hfyd.atlas.demo.bean.MainTabZipBean;
 import com.hfyd.atlas.demo.caller.MainTabCaller;
@@ -24,6 +22,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import rx.Observable;
 import rx.functions.Action1;
 import rx.functions.Func4;
@@ -36,6 +35,8 @@ public class MainActivity extends FragmentActivity {
     TabLayout tbMainNav;
     @BindView(R.id.vp_main_content)
     ViewPager vpMainContent;
+    @BindView(R.id.tv_user_info)
+    TextView tvUserInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,10 +70,17 @@ public class MainActivity extends FragmentActivity {
 
     }
 
+    @OnClick(R.id.tv_user_info)
+    public void onUserInfoClick(View view){
+        Intent intent = new Intent();
+        intent.setClassName(MainActivity.this,
+                "com.atlas.hfyd.bundle.user.LoginActivity");
+        startActivity(intent);
+    }
+
     private void injectTabAndContent() {
         RxComponentCaller creator = new RxComponentCaller(this);
         MainTabCaller caller = creator.create(MainTabCaller.class);
-
 
         Observable.zip(caller.getNewsFragment(), caller.getCoderFragment(), caller.getMovieFragment(), caller.getUserFragment(),
                 new Func4<AtlasResult<RemoteFragment>, AtlasResult<RemoteFragment>, AtlasResult<RemoteFragment>

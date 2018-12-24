@@ -11,6 +11,7 @@ ext {
         extension ->
             apply plugin: 'com.android.library'
             apply plugin: 'com.taobao.atlas'
+            apply plugin: 'com.jakewharton.butterknife'
             apply from: rootProject.file('autoregist.gradle')
 
             atlas {

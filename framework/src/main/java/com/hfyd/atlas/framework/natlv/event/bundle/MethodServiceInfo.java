@@ -10,13 +10,9 @@ import java.util.Map;
 public class MethodServiceInfo {
     public String methodName;
     public boolean isAsync;
-    public String componentName;
     public String action;
     public String interceptorName;
     public TransactionType remoteType;
-
-
-
     public String commandName;
 
     private Map<String,Object> paramMap;
@@ -42,7 +38,7 @@ public class MethodServiceInfo {
         return "MethodServiceInfo{" +
                 "methodName='" + methodName + '\'' +
                 ", isAsync=" + isAsync +
-                ", componentName='" + componentName + '\'' +
+                ", componentName='" + commandName + '\'' +
                 ", action='" + action + '\'' +
                 ", paramMap=" + paramMap +
                 '}';

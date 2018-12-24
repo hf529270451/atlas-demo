@@ -2,8 +2,10 @@ package com.hfyd.atlas.demo.caller;
 
 import android.os.Bundle;
 import android.taobao.atlas.remote.fragment.RemoteFragment;
+import android.taobao.atlas.remote.transactor.RemoteTransactor;
 
 import com.hfyd.atlas.framework.natlv.event.bundle.Async;
+import com.hfyd.atlas.framework.natlv.event.bundle.Param;
 import com.hfyd.atlas.framework.natlv.event.bundle.Sync;
 import com.hfyd.atlas.framework.natlv.event.bundle.TransactionLevel;
 import com.hfyd.atlas.framework.natlv.event.bundle.TransactionType;
@@ -33,4 +35,5 @@ public interface MainTabCaller {
     @Sync(action = "atlas.fragment.intent.action.user.USER_FRAGMENT")
     @TransactionLevel(TransactionType.TYPE_FRAGMENT)
     Observable<AtlasResult<RemoteFragment>> getUserFragment();
+
 }

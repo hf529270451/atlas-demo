@@ -29,6 +29,7 @@ dependencies {
     compile 'com.airbnb.android:lottie:2.2.0'
     compile 'com.jakewharton:butterknife:8.7.0'
     //compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-18'
-
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-18'
+    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-18'
     //compile 'com.airbnb.android:lottie:2.2.0'
 }
