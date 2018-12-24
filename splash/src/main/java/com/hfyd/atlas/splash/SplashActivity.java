@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.taobao.splashscreen.R;
+import com.hfyd.atlas.spalsh.R;
 
 /**
  * Author: hfyd
@@ -17,7 +17,7 @@ public class SplashActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+        setContentView(R.layout.splash_activity_splash);
 
         View contentView = findViewById(R.id.cl_content);
         contentView.postDelayed(new Runnable() {

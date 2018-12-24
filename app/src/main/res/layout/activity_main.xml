@@ -1,31 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <FrameLayout
-        android:id="@+id/content"
+    <RelativeLayout
+        android:background="#447df5"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="50pt">
 
-    </FrameLayout>
+        <TextView
+            android:layout_marginLeft="15pt"
+            android:layout_centerVertical="true"
+            android:text="AtlasDemo"
+            android:textSize="20pt"
+            android:textColor="@android:color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <Button
-        android:layout_alignParentBottom="true"
-        android:id="@+id/bt_update"
-        android:layout_width="100dp"
-        android:layout_height="30dp"/>
+    </RelativeLayout>
 
-    <Button
-        android:layout_toRightOf="@+id/bt_update"
-        android:layout_marginLeft="10dp"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/bt_dymic"
-        android:layout_width="100dp"
-        android:layout_height="30dp"/>
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tb_main_nav"
+        android:layout_width="match_parent"
+        android:layout_height="35pt"/>
+
+    <android.support.v4.view.ViewPager
+        android:layout_below="@+id/tb_main_nav"
+        android:id="@+id/vp_main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 
-</RelativeLayout>
+</LinearLayout>

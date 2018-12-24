@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hfyd.atlas.spalsh">
 
-    package="com.taobao.splashscreen">
-
-    <application android:allowBackup="true"
+    <application
+        android:allowBackup="true"
         android:supportsRtl="true">
 
         <activity

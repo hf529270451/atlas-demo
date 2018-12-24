@@ -1,12 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hfyd.atlas.demo.news" >
 
-
-
-    <application
-        android:allowBackup="true"
-        android:supportsRtl="true">
-        <meta-data android:name="atlas.fragment.intent.action.FIRST_FRAGMENT"
+    <application>
+        <meta-data android:name="atlas.fragment.intent.action.news.NEWS_FRAGMENT"
             android:value="com.hfyd.atlas.demo.news.NewsFragment"/>
     </application>
 

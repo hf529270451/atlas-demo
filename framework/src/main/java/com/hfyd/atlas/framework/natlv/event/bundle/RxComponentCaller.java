@@ -66,14 +66,14 @@ public class RxComponentCaller {
         Async async = method.getAnnotation(Async.class);
         if (async != null) {
             info.isAsync = true;
-            info.componentName = async.componentName();
+            //info.componentName = async.componentName();
             info.action = async.action();
         }
 
         Sync aync = method.getAnnotation(Sync.class);
         if (aync != null) {
             info.isAsync = false;
-            info.componentName = aync.componentName();
+            //info.componentName = aync.componentName();
             info.action = aync.action();
         }
 
@@ -109,8 +109,8 @@ public class RxComponentCaller {
 
 
     private void validateMethodServiceInfo(MethodServiceInfo info) {
-        if (TextUtils.isEmpty(info.componentName))
-            throw new RuntimeException("ComponentName must not null,Method: " + info.methodName);
+        /*if (TextUtils.isEmpty(info.componentName))
+            throw new RuntimeException("ComponentName must not null,Method: " + info.methodName);*/
         if (TextUtils.isEmpty(info.action))
             throw new RuntimeException("Action must not null,Method: " + info.methodName);
     }

@@ -1,14 +1,14 @@
 //apply from: rootProject.file('autoregist.gradle')
-apply plugin: 'com.taobao.atlas.library'
+apply plugin: 'com.android.library'
 
-atlas {
+/*atlas {
     bundleConfig{
         awbBundle true
     }
 }
 
 group = 'com.hfyd.atlas.host'
-version = '1.0.0'
+version = '1.0.0'*/
 
 android {
     compileSdkVersion 28
@@ -34,10 +34,10 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    providedCompile project(":core_cache")
-    providedCompile project(":core_image")
-    providedCompile project(":core_logger")
-    providedCompile project(":core_network")
-    providedCompile project(":core_parse")
-    providedCompile project(":core_widget")
+    compile project(":core_cache")
+    compile project(":core_image")
+    compile project(":core_logger")
+    compile project(":core_network")
+    compile project(":core_parse")
+    compile project(":core_widget")
 }

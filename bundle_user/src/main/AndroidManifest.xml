@@ -1,0 +1,12 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.atlas.hfyd.bundle.user" >
+
+    <application
+        android:allowBackup="true"
+        android:supportsRtl="true">
+        <meta-data android:name="atlas.fragment.intent.action.user.USER_FRAGMENT"
+            android:value="com.atlas.hfyd.bundle.user.UserFragment"/>
+    </application>
+
+
+</manifest>

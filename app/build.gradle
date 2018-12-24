@@ -1,7 +1,6 @@
-
 group = 'com.hfyd.atlas.demo'
 version = getEnvValue("versionName", "1.0.0");
-def apVersion = getEnvValue("apVersion", "1.0.0");
+def apVersion = getEnvValue("apVersion", "");
 
 apply plugin: 'com.taobao.atlas.application'
 apply plugin: 'com.taobao.atlas'
@@ -20,7 +19,7 @@ android {
         //通过增加判断逻辑，打出不同类型的定制包
         if (project.hasProperty("beta")) {
             buildConfigField "boolean", "API_ENV", "false"
-        }else{
+        } else {
             buildConfigField "boolean", "API_ENV", "false"
         }
         multiDexEnabled = true
@@ -34,7 +33,7 @@ android {
 
         debug {
             ndk {
-                abiFilters "x86","armeabi"
+                abiFilters "x86", "armeabi"
             }
         }
 
@@ -103,22 +102,21 @@ dependencies {
 
     compile 'com.alibaba:fastjson:1.1.45.android@jar'
 
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
+
 
     compile rootProject.ext.lib_atlas_core
     compile rootProject.ext.lib_atlas_update
 
-    compile project(':core_base')
-    compile project(':core_cache')
-    compile project(':core_image')
-    compile project(':core_logger')
-    compile project(':core_network')
-    compile project(':core_parse')
-    compile project(':core_widget')
+    compile project(':splash')
 
-    bundleCompile project(':framework')
+    compile project(':framework')
 
     bundleCompile project(':newsbundle')
     bundleCompile project(':activebundle')
+    bundleCompile project(':bundle_coder')
+    bundleCompile project(':bundle_movie')
+    bundleCompile project(':bundle_user')
 }
 
 
@@ -136,6 +134,27 @@ repositories {
     jcenter()
 }
 
+task reInstallDebugApk(group: 'custom') {
+    doLast {
+        def unCmd = "adb uninstall ${project.android.defaultConfig.applicationId}"
+        def process = unCmd.execute()
+        process.waitFor()
+
+        def debugFilePath = getDebugApkPath()
+        if (!(new File(debugFilePath)).exists()) {
+            println "apk not exist debugFilePath=${debugFilePath}"
+            return
+        }
+
+        def cmd = "adb install ${debugFilePath}"
+        cmd.execute()
+    }
+}
+
+def getDebugApkPath() {
+    def currFile = new File(".")
+    return currFile.getCanonicalPath() + "/build/outputs/apk/debug/app-debug.apk"
+}
 
 publishing {
     publications {

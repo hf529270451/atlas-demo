@@ -12,7 +12,8 @@
 
 5、 app工程目录下执行../gradlew clean assembleDebug -DapVersion=1.0.0 -DversionName=1.0.1,
     其中apVersion为之前打的完整apk的版本，newVersion为此次动态部署要生成的新的版本号，
-    例如命令 ../gradlew clean assembleDebug -DapVersion=1.0.0 -DversionName=1.0.1
+    例如命令
+    ../gradlew clean assembleDebug -DapVersion=1.0.0 -DversionName=1.0.1
 
 6、 检查build/output/tpatch-debug 目录下文件是否生成，然后执行下面的命令(以下为mac下的命令，windows请修改文件分隔符)
     (根据你手机的当前版本推送对应版本的update-**.json,和对应的tpatch文件)
@@ -48,4 +49,4 @@
 
 
 11.
-adb push /Users/hfyd/androidDemo/AtlasDemo2/app/build/outputs/remote-bundles-debug/libcom_hfyd_atlas_demo_active.so /sdcard/Android/data/com.atlas.hfyd/cache/libcom_hfyd_atlas_demo_active.so
+adb push /Users/hfyd/androidDemo/Atlas-Demo/app/build/outputs/remote-bundles-debug/libcom_hfyd_atlas_demo_active.so /sdcard/Android/data/com.atlas.hfyd/cache/libcom_hfyd_atlas_demo_active.so

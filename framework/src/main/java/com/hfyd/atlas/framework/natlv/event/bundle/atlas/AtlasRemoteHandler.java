@@ -8,6 +8,7 @@ import android.taobao.atlas.remote.RemoteFactory;
 import android.taobao.atlas.remote.fragment.RemoteFragment;
 import android.taobao.atlas.remote.transactor.RemoteTransactor;
 import android.taobao.atlas.remote.view.RemoteView;
+
 import com.hfyd.atlas.framework.natlv.event.bundle.MethodServiceInfo;
 import com.hfyd.atlas.framework.natlv.event.bundle.RemoteHandler;
 import com.hfyd.atlas.framework.natlv.event.bundle.TransactionType;
@@ -98,7 +99,7 @@ public class AtlasRemoteHandler implements RemoteHandler {
             });
         } else {
             Bundle response = iRemote.call(info.commandName, bundle, null);
-            subscriber.onNext(response);
+            subscriber.onNext(new AtlasResult<>(response, iRemote));
         }
     }
 

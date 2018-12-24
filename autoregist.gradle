@@ -1,3 +1,4 @@
+/*
 project.apply plugin: 'auto-register'
 project.ext.registerInfoList = [
         [ //自动注册组件
@@ -20,4 +21,4 @@ project.ext.registerInfoList = [
 ]
 autoregister {
     registerInfo = registerInfoList
-}
+}*/

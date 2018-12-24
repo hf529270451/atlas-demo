@@ -1,4 +1,4 @@
-package com.hfyd.atlas.demo;
+package com.hfyd.atlas.core.base;
 
 import android.app.Activity;
 import android.app.Application;
@@ -9,7 +9,6 @@ import android.taobao.atlas.framework.Atlas;
 import android.taobao.atlas.runtime.ActivityTaskMgr;
 import android.taobao.atlas.runtime.ClassNotFoundInterceptorCallback;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.Toast;
 
 import org.osgi.framework.BundleException;
@@ -18,7 +17,7 @@ import java.io.File;
 
 /**
  * Author: hfyd
- * Date: 2018/12/18
+ * Date: 2018/12/24
  * Description:
  */
 public class MyApplication extends Application {
@@ -26,6 +25,12 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        ScreenUtils.activateScreenAdapt(this);
+
+        initAtlas();
+    }
+
+    private void initAtlas() {
         Atlas.getInstance().setClassNotFoundInterceptorCallback(
                 new ClassNotFoundInterceptorCallback() {
                     @Override

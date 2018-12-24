@@ -1,0 +1,92 @@
+ext {
+
+    def appInfo = [
+            compileSdkVersion: 27,
+            buildToolsVersion: '26.0.2',
+            minSdkVersion    : 14,
+            targetSdkVersion : 25
+    ]
+
+    setBundlePlugin = {
+        extension ->
+            apply plugin: 'com.android.library'
+            apply plugin: 'com.taobao.atlas'
+            apply from: rootProject.file('autoregist.gradle')
+
+            atlas {
+                bundleConfig {
+                    awbBundle true
+                }
+                buildTypes {
+                    debug {
+                        baseApFile project.rootProject.file('app/build/outputs/apk/debug/app-debug.ap')
+                    }
+                }
+            }
+
+            android {
+                compileSdkVersion appInfo.compileSdkVersion
+                buildToolsVersion appInfo.buildToolsVersion
+                defaultConfig {
+                    minSdkVersion appInfo.minSdkVersion
+                    targetSdkVersion appInfo.targetSdkVersion
+
+                    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+                }
+
+                buildTypes {
+                    release {
+                        minifyEnabled false
+                        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+                    }
+                }
+
+            }
+
+            setDependencies extension
+    }
+
+
+    setComponentPlugin = {
+        extension ->
+            apply plugin: 'com.android.library'
+            apply plugin: 'com.taobao.atlas'
+            apply from: rootProject.file('autoregist.gradle')
+
+            android {
+                compileSdkVersion appInfo.compileSdkVersion
+                buildToolsVersion appInfo.buildToolsVersion
+                defaultConfig {
+                    minSdkVersion appInfo.minSdkVersion
+                    targetSdkVersion appInfo.targetSdkVersion
+
+                    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+                }
+
+                buildTypes {
+                    release {
+                        minifyEnabled false
+                        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+                    }
+                }
+
+            }
+
+            setDependencies extension
+    }
+
+    setDependencies = {
+        extension ->
+            extension.dependencies {
+                implementation fileTree(dir: 'libs', include: ['*.jar'])
+                testImplementation 'junit:junit:4.12'
+                androidTestImplementation 'com.android.support.test:runner:1.0.2'
+                androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+                compile project(':framework')
+                annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
+            }
+    }
+
+}

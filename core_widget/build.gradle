@@ -26,6 +26,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     compile project(":core_base")
     compile 'com.android.support.constraint:constraint-layout:1.1.3'
+    compile 'com.airbnb.android:lottie:2.2.0'
+    compile 'com.jakewharton:butterknife:8.7.0'
     //compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-18'
 
     //compile 'com.airbnb.android:lottie:2.2.0'
